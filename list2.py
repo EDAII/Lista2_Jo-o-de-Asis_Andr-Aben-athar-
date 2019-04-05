@@ -1,47 +1,47 @@
 from random import randint
 import time
 
+######## ALGORITMOS DE ORDENAÇÃO PARA COMPARAÇÃO DE TEMPO
 
-
-def bubbleSort(roger):
+def bubbleSort(lst): 
     start = time.time()
-    lst = roger
+    order = False
     nElements = len(lst)-1
     while not order:
+        order=True
         for i in range(nElements):
             if lst[i] > lst[i+1]:
-                lst[i], lst[i+1] = lst[i+1],lst[i]       
+                lst[i], lst[i+1] = lst[i+1],lst[i] 
+                order = False      
     end = time.time()   
     elapsed = end - start
     return [lst,elapsed]
 
-def selectionSort(roger):
+def selectionSort(lst):
     start = time.time()
-    alist = roger
-    for i in range(len(alist)):
+    for i in range(len(lst)):
         minPosition = i
-        for j in range(i+1, len(alist)):
-            if alist[minPosition] > alist[j]:
+        for j in range(i+1, len(lst)):
+            if lst[minPosition] > lst[j]:
                 minPosition = j   
-        temp = alist[i]
-        alist[i] = alist[minPosition]
-        alist[minPosition] = temp
+        temp = lst[i]
+        lst[i] = lst[minPosition]
+        lst[minPosition] = temp
     end = time.time()   
     elapsed = end - start               
-    return [alist,elapsed]
+    return [lst,elapsed]
 
-def insertionSort(roger):
+def insertionSort(lst):
     start = time.time()
-    alist = roger
-    for i in range(1,len(alist)):
-        current = alist[i]
-        while i>0 and alist[i-1]>current:
-            alist[i] = alist[i-1]
+    for i in range(1,len(lst)):
+        current = lst[i]
+        while i>0 and lst[i-1]>current:
+            lst[i] = lst[i-1]
             i = i-1
-            alist[i] = current
+            lst[i] = current
     end = time.time()   
     elapsed = end - start        
-    return [alist,elapsed]
+    return [lst,elapsed]
 
 def sortTime(funcao,n):
     relacao = []
@@ -56,16 +56,19 @@ def sortTime(funcao,n):
 
 sortTime(insertionSort,10)
 
+#######ALGORITMOS DE ORDENAÇÃO PARA INDICAÇÃO DO PASSO A PASSO
 
-def PrintBubbleSort(roger):
+def PrintBubbleSort(lst):
     start = time.time()
-    lst = roger
+    order = False
     nElements = len(lst)-1
     while not order:
+        order = True
         for i in range(nElements):
             pointer = " "
             if lst[i] > lst[i+1]:
-                lst[i], lst[i+1] = lst[i+1],lst[i]       
+                lst[i], lst[i+1] = lst[i+1],lst[i]  
+                order = False     
                 print(lst)
                 for z in range (0,i):
                     pointer += "   "
@@ -75,21 +78,20 @@ def PrintBubbleSort(roger):
     elapsed = end - start
     return [lst,elapsed]
 
-def PrintSelectionSort(roger):
+def PrintSelectionSort(lst):
     start = time.time()
-    alist = roger
-    for i in range(len(alist)):
+    for i in range(len(lst)):
         minPosition = i
         string = " "
         troca = False
-        for j in range(i+1, len(alist)):
-            if alist[minPosition] > alist[j]:
+        for j in range(i+1, len(lst)):
+            if lst[minPosition] > lst[j]:
                 minPosition = j
                 troca=True    
-        temp = alist[i]
-        alist[i] = alist[minPosition]
-        alist[minPosition] = temp
-        print(alist)
+        temp = lst[i]
+        lst[i] = lst[minPosition]
+        lst[minPosition] = temp
+        print(lst)
         if troca:
             for j in range(0,i):
                 string +="   "
@@ -100,28 +102,25 @@ def PrintSelectionSort(roger):
             print(string) 
     end = time.time()   
     elapsed = end - start               
-    return [alist,elapsed]
+    return [lst,elapsed]
 
-def PrintInsertionSort(roger):
+def PrintInsertionSort(lst):
     start = time.time()
-    alist = roger
-    y=0
-    z=0
-    for i in range(1,len(alist)):
-        current = alist[i]
-        while i>0 and alist[i-1]>current:
+    for i in range(1,len(lst)):
+        current = lst[i]
+        while i>0 and lst[i-1]>current:
             string = " "
-            alist[i] = alist[i-1]
+            lst[i] = lst[i-1]
             i = i-1
-            alist[i] = current
-            print(alist)
+            lst[i] = current
+            print(lst)
             for j in range(0,i):
                 string+="   "
             string+="^  ^"
             print(string)
     end = time.time()   
     elapsed = end - start        
-    return [alist,elapsed]
+    return [lst,elapsed]
 
 
 
