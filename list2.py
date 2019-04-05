@@ -59,6 +59,7 @@ sortTime(insertionSort,10)
 #######ALGORITMOS DE ORDENAÇÃO PARA INDICAÇÃO DO PASSO A PASSO
 
 def PrintBubbleSort(lst):
+    print(lst)
     start = time.time()
     order = False
     nElements = len(lst)-1
@@ -76,9 +77,10 @@ def PrintBubbleSort(lst):
                 print(pointer)
     end = time.time()   
     elapsed = end - start
-    return [lst,elapsed]
+    return [lst]
 
 def PrintSelectionSort(lst):
+    print(lst)
     start = time.time()
     for i in range(len(lst)):
         minPosition = i
@@ -102,9 +104,10 @@ def PrintSelectionSort(lst):
             print(string) 
     end = time.time()   
     elapsed = end - start               
-    return [lst,elapsed]
+    return [lst]
 
 def PrintInsertionSort(lst):
+    print(lst)
     start = time.time()
     for i in range(1,len(lst)):
         current = lst[i]
@@ -120,7 +123,7 @@ def PrintInsertionSort(lst):
             print(string)
     end = time.time()   
     elapsed = end - start        
-    return [lst,elapsed]
+    return [lst]
 
 
 
@@ -135,15 +138,59 @@ for i in range(5):
 	value = randint(0, 10)
 	vetor.append(value)
 
+
+print("Olá! esse programa mostrará os passos que cada algoritimo precisa tomar"+'\n' + "Para se ordenar")
+print("O vetor a ser ordenado será ")
+print(vetor)
+print("\n\n\nInsertion sort:")
 aux = []
 monkeyCopy(vetor,aux)
 aux
 print(PrintInsertionSort(aux))
+
 aux = []
 monkeyCopy(vetor,aux)
 aux
+
+print("\n\n\nSelection sort sort:")
 print(PrintSelectionSort(aux))
+
 aux = []
 monkeyCopy(vetor,aux)
 aux
+
+print("\n\n\nBuble sort:")
 print(PrintBubbleSort(aux))
+
+
+tempoIserction = []
+tempoSelection = []
+tempoBubble = []
+
+n = 100
+
+while n:
+    n-=1
+    vetorr = []
+    for i in range(100):
+        value = randint(0, 100)
+        vetorr.append(value)
+
+    aux = []
+    monkeyCopy(vetorr,aux)
+    aux
+    tempoIserction.append(insertionSort(aux)[1])
+
+    aux = []
+    monkeyCopy(vetorr,aux)
+    aux
+    tempoSelection.append(selectionSort(aux)[1])
+
+    aux = []
+    monkeyCopy(vetorr,aux)
+    aux
+    tempoBubble.append(bubbleSort(aux)[1])
+
+print("Buble tempo medio : " + str(sum(tempoBubble)/100) + "segundos")
+print("Inserction tempo medio : " + str(sum(tempoIserction)/100) + "segundos")
+print("Selection tempo medio : " + str(sum(tempoSelection)/100) + "segundos")
