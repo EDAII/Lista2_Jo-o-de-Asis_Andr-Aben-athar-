@@ -1,4 +1,10 @@
-def bubbleSort(lst):
+from random import randint
+import time
+
+
+def bubbleSort(roger):
+    start = time.time()
+    lst = roger
     nElements = len(lst)-1
     order = False
     pointer = ""
@@ -15,9 +21,13 @@ def bubbleSort(lst):
                     pointer += "  "
                 pointer+="^  ^"
                 print(pointer)
-    return lst
+    end = time.time()   
+    elapsed = end - start
+    return [lst,elapsed]
 
-def selectionSort(alist):
+def selectionSort(roger):
+    start = time.time()
+    alist = roger
     for i in range(len(alist)):
         minPosition = i
         string = " "
@@ -37,10 +47,14 @@ def selectionSort(alist):
             for j in range(0,minPosition-i):
                 string +="  "
             string+="^"
-            print(string)        
-    return alist
+            print(string) 
+    end = time.time()   
+    elapsed = end - start               
+    return [alist,elapsed]
 
-def insertionSort(alist):
+def insertionSort(roger):
+    start = time.time()
+    alist = roger
     y=0
     z=0
     for i in range(1,len(alist)):
@@ -63,11 +77,27 @@ def insertionSort(alist):
                 string+="   "
             string+="^"
             print(string)
-    return alist
+    end = time.time()   
+    elapsed = end - start        
+    return [alist,elapsed]
 
-insertionSort([1,5,4,2,3])
 
-selectionSort([1,5,4,2,3])
+vetor = []
 
-bubbleSort([1,5,4,2])
+for _ in range(10):
+	value = randint(0, 10)
+	vetor.append(value)
 
+aux = vetor
+print(insertionSort(aux))
+print("lhul\n")
+
+aux = vetor
+
+print(selectionSort(aux))
+aux = vetor
+print("lhul\n")
+
+print(bubbleSort(aux))
+
+print("lhul\n")
