@@ -190,6 +190,8 @@ while n:
     monkeyCopy(vetorr,aux)
     aux
     tempoBubble.append(bubbleSort(aux)[1])
+print("Agora foram feitas 100 ordenações com 100 arrays de 100 numeros aleatórios.")
+print("Abaixo se encontram os tempos médios gastos")
 
 print("Buble tempo medio : " + str(sum(tempoBubble)/100) + "segundos")
 print("Inserction tempo medio : " + str(sum(tempoIserction)/100) + "segundos")
